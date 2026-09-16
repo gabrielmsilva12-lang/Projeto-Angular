@@ -1,1 +1,18 @@
-<p>menu works!</p>
+<div class="app-menu" [class.open]="isOpen">
+  <aside class="menu-panel" aria-label="Menu lateral">
+    <div class="menu-brand">
+      <img src="/img/ford.png" alt="Ford" class="ford-logo" />
+    </div>
+    <nav class="menu-nav">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a>
+      <a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">Dashboard</a>
+      <button type="button" class="logout-button" (click)="logout()">Sair do sistema</button>
+    </nav>
+  </aside>
+
+  <button class="menu-toggle" type="button" (click)="toggleMenu()" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</div>
