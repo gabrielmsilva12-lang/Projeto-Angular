@@ -1,1 +1,88 @@
-<p>dashboard works!</p>
+<app-menu></app-menu>
+<div class="dashboard-container">
+  <header class="top-bar">
+    <button class="menu-btn" type="button" aria-label="Menu">
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+    <div class="user-profile">
+      <span class="user-icon">👤</span>
+    </div>
+  </header>
+
+  <h1 class="dashboard-title">Dashboard FORD</h1>
+
+  <section class="cards-grid">
+    <div class="card card-select">
+      <div class="card-header">Veículo</div>
+      <div class="card-body">
+        <select class="vehicle-select" name="veiculo" id="veiculos" (change)="veiculoEscolhido($event)">
+          <option value="" selected disabled hidden>Escolha Um Dos Nossos Veiculos</option>
+          <option value="Ranger" *ngFor="let v of veiculos" [value]="v.id">
+            {{ v.vehicle }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Total de Vendas</div>
+      <div class="card-body">
+        <span class="card-value">{{ veiculoSelecionado?.volumetotal || 0 }}</span>
+        <span class="card-unit">Unid.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Conectados</div>
+      <div class="card-body">
+        <span class="card-value">{{ veiculoSelecionado?.connected || 0 }}</span>
+        <span class="card-unit">Unid.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Update Software</div>
+      <div class="card-body">
+        <span class="card-value">{{veiculoSelecionado?.softwareUpdates || 0}}</span>
+        <span class="card-unit">Unid.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="car-section">
+    <img *ngIf="veiculoSelecionado" [src]="veiculoSelecionado.foto" [alt]="veiculoSelecionado.vehicle" />
+  </section>
+
+  <section class="table-container">
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Código - Vin</th>
+            <th>Odômetro</th>
+            <th>Nível de Combustível</th>
+            <th>Status</th>
+            <th>Lat.</th>
+            <th>Long.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input type="text" class="vin-input" [(ngModel)]="vinCodigo" />
+              <button type="button" (click)="buscarDadosVeiculo()">Buscar</button>
+            </td>
+            <td data-label="Odometro"> {{ codigoVeiculo?.odometro || 0 }} Km</td>
+            <td data-label="Nível de Combustível">{{ codigoVeiculo?.nivelCombustivel || 0 }}%</td>
+            <td data-label="Status"> {{ codigoVeiculo?.status || 0 }}</td>
+            <td data-label="Lat.">{{ codigoVeiculo?.lat || '-' }}</td>
+            <td data-label="Long.">{{ codigoVeiculo?.long || '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-footer-bar"></div>
+  </section>
+</div>

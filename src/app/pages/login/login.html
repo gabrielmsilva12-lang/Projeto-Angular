@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="pagina">
+        <div class="imagem-carro">
+            <img src="../../../../public/ranger.png" alt="Ford Ranger">
+        </div>
+        <div class="login">
+            <img src="../../../../public/ford.png" alt="Logo Ford" class="logo">
+            
+            <h1>Boas-vindas</h1>
+
+            <form #loginForm="ngForm" (ngSubmit)="login()">
+                <div class="campo">
+                    <i class="fa-regular fa-user icone-esquerda"></i>
+                    <input type="text" [(ngModel)]="usuario.nome" name="nome" placeholder="Insira seu nome">
+                    <i class="fa-regular fa-circle-check icone-direita"></i>
+                </div>
+
+                <div class="campo">
+                    <i class="fa-solid fa-lock icone-esquerda"></i>
+                    <input type="password" [(ngModel)]="usuario.senha" name="senha" placeholder="Insira sua senha">
+                    <i class="fa-regular fa-eye icone-direita"></i>
+                </div>
+
+                <div class="automatico">
+                    <label for="auto">Logar automaticamente</label>
+                    <input type="checkbox" id="auto">
+                    <i class="fa-regular fa-circle-check icone-verde"></i>
+                </div>
+
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+
+    </div>
