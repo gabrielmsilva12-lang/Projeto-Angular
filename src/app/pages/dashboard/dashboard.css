@@ -12,34 +12,19 @@
 
 .top-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 12px 20px;
   width: 100%;
   box-sizing: border-box;
-}
-
-.menu-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 2px;
-}
-
-.menu-bar {
-  width: 18px;
-  height: 3px;
-  background-color: #55b356;
-  border-radius: 1px;
+  min-height: 54px;
 }
 
 .user-profile {
   font-size: 16px;
   color: #888888;
   cursor: pointer;
+  margin-left: auto;
 }
 
 .dashboard-title {
@@ -52,7 +37,7 @@
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
   gap: 16px;
   padding: 0 20px;
   max-width: 1100px;
@@ -101,7 +86,6 @@
   margin-top: 2px;
 }
 
-/* Estilização da tag select */
 .vehicle-select {
   width: 100%;
   border: 1px solid #a6c8e0;
@@ -126,8 +110,8 @@
   padding: 0 20px;
 }
 
-.car-image {
-  max-width: 360px;
+.car-section img {
+  max-width: min(90vw, 500px);
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -164,8 +148,8 @@
   padding: 10px 14px;
   color: #111111;
   font-weight: bold;
-  white-space: nowrap;
   background-color: #ffffff;
+  white-space: nowrap;
 }
 
 .vin-input {
@@ -189,11 +173,15 @@
 
 @media (max-width: 992px) {
   .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
   }
 }
 
 @media (max-width: 576px) {
+  .dashboard-container {
+    padding-top: 0;
+  }
+
   .cards-grid {
     grid-template-columns: 1fr;
     padding: 0 16px;
@@ -203,7 +191,11 @@
     padding: 10px 16px;
   }
 
-  .car-image {
-    max-width: 260px;
+  .car-section {
+    padding: 0 12px;
+  }
+
+  .data-table {
+    min-width: 520px;
   }
 }
